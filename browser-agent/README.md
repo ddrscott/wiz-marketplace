@@ -143,6 +143,43 @@ browser-agent/
 └── plugin.json
 ```
 
+## Troubleshooting
+
+**Plugin not working or conflicting with other browser tools?**
+
+1. Check installed plugins:
+   ```
+   /plugins
+   ```
+
+2. Uninstall conflicting Playwright plugins:
+   ```bash
+   # Remove other playwright-based plugins that may conflict
+   claude plugin uninstall playwright-mcp
+   claude plugin uninstall playwright-skill
+   ```
+
+3. Check what's loaded in context:
+   ```
+   /context
+   ```
+
+4. General help:
+   ```
+   /help
+   ```
+
+**Browser not starting?**
+
+- Verify Chrome is installed and in a standard location
+- Check if port 9222 is already in use: `lsof -i :9222`
+- Clear browser state: `uv run browser.py stop`
+
+**Scripts failing?**
+
+- Check browser status: `uv run browser.py status`
+- Make sure browser is running: `uv run browser.py start`
+
 ## License
 
 MIT
