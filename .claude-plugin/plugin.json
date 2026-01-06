@@ -1,0 +1,25 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "wiz-plugins",
+  "version": "1.0.0",
+  "description": "Bundled of plugins from Scott's AI Wizard (Wiz) collection, maintained by Scott Pierce.",
+  "owner": {
+    "name": "Scott Pierce",
+    "email": "ddrscott@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "agent-sdk-dev",
+      "description": "Guided book builder from ideation to outline and chapter generation",
+      "source": "./plugins/create-book",
+      "category": "development"
+    },
+    {
+      "name": "browser-agent",
+      "version": "1.0.0",
+      "description": "Lightweight browser automation via subprocess agent. Zero context overhead in main session.",
+      "source": "./plugins/browser-agent",
+      "category": "development"
+    }
+  ]
+}

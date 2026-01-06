@@ -1,0 +1,9 @@
+{
+  "name": "browser-agent",
+  "version": "1.0.0",
+  "description": "Browser automation agent using Playwright for web scraping, testing, screenshots, form filling, and interactive web tasks. Maintains persistent browser state for session continuity.",
+  "author": {
+    "name": "Scott Pierce",
+    "email": "ddrscott@gmail.com"
+  }
+}

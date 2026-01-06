@@ -1,0 +1,10 @@
+{
+  "name": "book-creator",
+  "version": "0.1.0",
+  "description": "Guided non-fiction book creator from ideation to markdown chapters with image placeholders",
+  "author": {
+    "name": "Scott Pierce",
+    "email": "hey@askscottpierce.com"
+  },
+  "keywords": ["writing", "book", "non-fiction", "content", "authoring"]
+}

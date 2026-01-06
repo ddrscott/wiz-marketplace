@@ -1,0 +1,18 @@
+{
+  "name": "wiz-marketplace",
+  "owner": {
+    "name": "Scott Pierce"
+  },
+  "plugins": [
+    {
+      "name": "book-creator",
+      "source": "./book-creator",
+      "description": "/book-* commands to create and manage books."
+    },
+    {
+      "name": "browser-agent",
+      "source": "./browser-agent",
+      "description": "Lightweight browser automation via Playwright subprocess agent. Zero context overhead in main session."
+    }
+  ]
+}
