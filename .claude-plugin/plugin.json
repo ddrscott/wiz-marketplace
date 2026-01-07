@@ -1,25 +1,33 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "wiz-plugins",
+  "name": "wiz-marketplace",
   "version": "1.0.0",
-  "description": "Bundled of plugins from Scott's AI Wizard (Wiz) collection, maintained by Scott Pierce.",
+  "description": "Context-efficient Claude Code plugins from Scott's AI Wizard (Wiz) collection.",
   "owner": {
     "name": "Scott Pierce",
     "email": "ddrscott@gmail.com"
   },
   "plugins": [
     {
-      "name": "agent-sdk-dev",
-      "description": "Guided book builder from ideation to outline and chapter generation",
-      "source": "./plugins/create-book",
-      "category": "development"
-    },
-    {
       "name": "browser-agent",
       "version": "1.0.0",
-      "description": "Lightweight browser automation via subprocess agent. Zero context overhead in main session.",
-      "source": "./plugins/browser-agent",
-      "category": "development"
+      "description": "Browser automation with persistent Chrome sessions. Full Playwright API access without the context bloat.",
+      "source": "./browser-agent",
+      "category": "automation"
+    },
+    {
+      "name": "fal-agent",
+      "version": "1.0.0",
+      "description": "AI media generation using fal.ai. Smart model selection for images, videos, and audio without the research.",
+      "source": "./fal-agent",
+      "category": "media"
+    },
+    {
+      "name": "book-creator",
+      "version": "1.0.0",
+      "description": "Create structured books and documents with chapters, formatting, and export options.",
+      "source": "./book-creator",
+      "category": "content"
     }
   ]
 }

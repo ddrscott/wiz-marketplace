@@ -5,14 +5,19 @@
   },
   "plugins": [
     {
-      "name": "book-creator",
-      "source": "./book-creator",
-      "description": "/book-* commands to create and manage books."
-    },
-    {
       "name": "browser-agent",
       "source": "./browser-agent",
-      "description": "Lightweight browser automation via Playwright subprocess agent. Zero context overhead in main session."
+      "description": "Browser automation with persistent Chrome sessions. Full Playwright API access without the context bloat."
+    },
+    {
+      "name": "fal-agent",
+      "source": "./fal-agent",
+      "description": "AI media generation using fal.ai. Smart model selection for images, videos, and audio without the research."
+    },
+    {
+      "name": "book-creator",
+      "source": "./book-creator",
+      "description": "Create structured books and documents with chapters, formatting, and export options."
     }
   ]
 }

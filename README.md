@@ -7,6 +7,7 @@ A collection of Claude Code plugins that extend Claude's capabilities with speci
 | Plugin | Description |
 |--------|-------------|
 | [browser-agent](./browser-agent) | Browser automation with persistent Chrome sessions. Full Playwright API access without the context bloat. |
+| [fal-agent](./fal-agent) | AI media generation using fal.ai. Smart model selection for images, videos, and audio without the research. |
 | [book-creator](./book-creator) | Create structured books and documents with chapters, formatting, and export options. |
 
 ## Prerequisites
@@ -24,12 +25,32 @@ See individual plugin READMEs for specific requirements.
 
 ## Installation
 
-Plugins can be installed from this marketplace using Claude Code's plugin system.
+Installing plugins is a two-step process: first add the marketplace, then install individual plugins.
 
-```bash
-# Example: Install browser-agent
-claude plugin install wiz-marketplace/browser-agent
+### Step 1: Add the marketplace
+
+From within Claude Code, run:
+
 ```
+/plugin marketplace add ddrscott/wiz-marketplace
+```
+
+### Step 2: Install plugins
+
+Install the plugins you want using the `plugin-name@marketplace-name` format:
+
+```
+/plugin install browser-agent@wiz-marketplace
+/plugin install fal-agent@wiz-marketplace
+```
+
+**Or use the interactive UI:** Run `/plugin`, go to the **Discover** tab, and select plugins to install.
+
+### Troubleshooting
+
+- **`/plugin` command not recognized?** Update Claude Code to version 1.0.33 or later
+- **Marketplace not loading?** Verify you have internet access and the repository is public
+- **Plugin not appearing?** Try `/plugin marketplace update wiz-marketplace`
 
 ## Philosophy
 

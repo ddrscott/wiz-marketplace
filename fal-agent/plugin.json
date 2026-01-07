@@ -1,0 +1,9 @@
+{
+  "name": "fal-agent",
+  "version": "1.1.0",
+  "description": "AI media generation using fal.ai. Generate images, videos, and audio with smart model selection. Minimal context, maximum power.",
+  "author": {
+    "name": "Scott Pierce",
+    "email": "ddrscott@gmail.com"
+  }
+}
