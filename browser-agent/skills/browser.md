@@ -17,7 +17,7 @@ The browser agent has full Playwright API access and can handle any browser auto
 
 **Interactive browsing (user wants to see browser):**
 ```
-"Open https://amazon.com so I can browse the sales. Use --keep-open so I can interact with it."
+"Open https://amazon.com so I can browse the sales."
 ```
 
 **Take a screenshot:**

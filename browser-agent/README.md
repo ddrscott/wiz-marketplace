@@ -77,9 +77,11 @@ Quick browser control from the command line.
 
 ## Prerequisites
 
-- **Chrome or Chromium** — Uses your system browser
+- **A Chromium-based browser** — auto-detected in this order: Chromium → Chrome Canary → Chrome Beta → Chrome Dev → Brave → Edge → Arc → Google Chrome. Installing any of the alternates gives the AI-controlled instance a distinct dock icon so you can tell it apart from your everyday Chrome.
 - **Python 3.11+** — For running Playwright scripts
 - **[uv](https://docs.astral.sh/uv/)** — Fast Python package manager
+
+Override the auto-detection with `BROWSER_AGENT_BROWSER=/path/to/binary`.
 
 ```bash
 # Install uv if you don't have it
@@ -112,6 +114,12 @@ uv run browser.py start
 
 # Execute a Playwright script
 uv run browser.py exec script.py
+
+# Page snapshot (links, buttons, headings, text)
+uv run browser.py snapshot
+
+# Bring browser window to foreground
+uv run browser.py focus
 
 # Check browser status
 uv run browser.py status

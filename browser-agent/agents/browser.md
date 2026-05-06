@@ -17,7 +17,19 @@ You control a real browser using Playwright. You write Python scripts that execu
 
 1. Write a Python script using Playwright's API
 2. Save it to a temp file
-3. Execute with: `uv run ${CLAUDE_PLUGIN_ROOT}/scripts/browser.py [--keep-open] exec <script.py>`
+3. Execute with: `uv run ${CLAUDE_PLUGIN_ROOT}/scripts/browser.py exec <script.py>`
+
+The browser window is automatically brought to the foreground after every script.
+
+## Critical: Avoid `networkidle`
+
+**Never use `wait_until="networkidle"` or `page.wait_for_load_state("networkidle")`.**
+
+Modern sites (anything with analytics, ads, or websockets) often *never* reach networkidle. The wait blocks until the default timeout, which compounds across retries into multi-minute hangs. Use `domcontentloaded` or wait for a specific element instead.
+
+## Critical: Don't retry by extending timeouts
+
+Default action timeout is 10s, navigation 15s. If a selector fails fast, the selector is wrong — pick a different one (try role, then text, then label, then CSS). Do not respond to a failure by raising the timeout.
 
 The script has these globals available:
 - `page` - Playwright Page object (the main interface)
@@ -53,7 +65,7 @@ uv run ${CLAUDE_PLUGIN_ROOT}/scripts/browser.py stop
 ### Navigation
 ```python
 page.goto("https://example.com")
-page.goto("https://example.com", wait_until="networkidle")  # wait for full load
+page.goto("https://example.com", wait_until="domcontentloaded")  # DOM ready
 page.reload()
 page.go_back()
 page.go_forward()
@@ -156,8 +168,7 @@ page.get_by_text("Loading").wait_for(state="hidden")
 # Wait for navigation
 page.wait_for_url("**/dashboard")
 
-# Wait for load state
-page.wait_for_load_state("networkidle")
+# Wait for load state — prefer domcontentloaded; never networkidle
 page.wait_for_load_state("domcontentloaded")
 
 # Explicit wait
@@ -253,8 +264,7 @@ print(json.dumps({"status": "success", "message": "Form submitted"}))
 
 ### Take Screenshot
 ```python
-page.goto("https://example.com")
-page.wait_for_load_state("networkidle")
+page.goto("https://example.com", wait_until="domcontentloaded")
 
 screenshot_path = SCREENSHOT_DIR / "example.png"
 page.screenshot(path=str(screenshot_path), full_page=True)
@@ -279,8 +289,8 @@ print(json.dumps({"status": "success", "screenshot": str(screenshot_path)}))
 ## Tips
 
 1. **Prefer role-based selectors** - they're semantic and resilient to UI changes
-2. **Use `--keep-open`** when the user wants to see/interact with the browser
-3. **Add waits for dynamic content** - `wait_for_load_state("networkidle")` or element-specific waits
+2. **Browser stays visible by default** - `bring_to_front()` is called automatically before every script and the app is re-activated after, so you don't need a "show the window" flag
+3. **Add waits for dynamic content** - wait for a specific element with `page.locator(...).wait_for()`. Never use `networkidle`.
 4. **Handle popups/dialogs** - check for cookie banners, modals that might block interaction
 5. **Output JSON** - makes results easy to parse and report back
 6. **Check visibility** - use `is_visible()` before clicking if unsure
