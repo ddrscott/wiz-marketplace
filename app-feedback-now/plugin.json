@@ -1,0 +1,9 @@
+{
+  "name": "app-feedback-now",
+  "version": "1.0.0",
+  "description": "Leave inline comments on a live web app without touching the source. A bookmarklet drops a feedback widget onto any page of your dev server; comments POST to a localhost sidecar and Claude edits the source files in response. Fork of make-pages-interactive (by Paras Chopra) adapted for wrangler/vite/astro dev servers.",
+  "author": {
+    "name": "Scott Pierce",
+    "email": "ddrscott@gmail.com"
+  }
+}

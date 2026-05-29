@@ -18,6 +18,11 @@
       "name": "book-creator",
       "source": "./book-creator",
       "description": "Create structured books and documents with chapters, formatting, and export options."
+    },
+    {
+      "name": "app-feedback-now",
+      "source": "./app-feedback-now",
+      "description": "Leave inline comments on a live web app without touching the source. Bookmarklet + localhost sidecar; Claude edits source files in response. Fork of make-pages-interactive adapted for wrangler/vite/astro dev servers."
     }
   ]
 }

@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>app-feedback-now · {{SLUG}}</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #161922;
+      --panel-2: #1d212c;
+      --ink: #e8eaf0;
+      --ink-dim: #8a92a6;
+      --accent: #ff7a3d;
+      --accent-soft: #ffb38a;
+      --border: #2a2f3d;
+      --ok: #4ade80;
+      --shadow: 0 18px 60px rgba(0,0,0,0.55);
+      --mono: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(1200px 600px at 70% -10%, rgba(255,122,61,0.10), transparent 60%),
+                  radial-gradient(900px 500px at -10% 80%, rgba(125,200,255,0.06), transparent 60%),
+                  var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 24px 80px;
+      line-height: 1.55;
+    }
+    .wrap { width: 100%; max-width: 720px; }
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      margin: 0 0 8px;
+    }
+    h1 {
+      font-size: 36px;
+      line-height: 1.1;
+      margin: 0 0 12px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .sub {
+      color: var(--ink-dim);
+      margin: 0 0 36px;
+      font-size: 16px;
+    }
+    .bookmarklet-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 32px;
+    }
+    .bookmarklet-instructions {
+      font-size: 14px;
+      color: var(--ink-dim);
+      margin: 0 0 16px;
+    }
+    .bookmarklet-instructions strong { color: var(--ink); }
+    .bookmarklet-drag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: #1a0f06;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 12px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(255,122,61,0.35);
+      cursor: grab;
+      user-select: none;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+    .bookmarklet-drag:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 26px rgba(255,122,61,0.45);
+    }
+    .bookmarklet-drag:active { cursor: grabbing; }
+    .bookmarklet-drag::before { content: "💬"; font-size: 18px; }
+    .drag-hint {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-dim);
+      margin-top: 12px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 0 0 32px;
+    }
+    .stat {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .stat-k {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      margin: 0 0 4px;
+    }
+    .stat-v {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--ink);
+      word-break: break-all;
+    }
+    h2 {
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      margin: 36px 0 12px;
+      font-weight: 600;
+    }
+    ol { padding-left: 22px; margin: 0 0 24px; color: var(--ink); }
+    ol li { margin-bottom: 8px; }
+    code {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      background: var(--panel-2);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+    .pill {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ok);
+      background: rgba(74,222,128,0.10);
+      border: 1px solid rgba(74,222,128,0.30);
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .footer {
+      margin-top: 56px;
+      font-size: 12px;
+      color: var(--ink-dim);
+      font-family: var(--mono);
+    }
+    @media (max-width: 560px) {
+      .grid { grid-template-columns: 1fr; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">app-feedback-now <span class="pill">running</span></p>
+    <h1>Drag this to your bookmark bar.</h1>
+    <p class="sub">
+      Then open any page of your dev app and click the bookmark. A feedback widget appears.
+      Comments POST back here and Claude monitors the inbox — no source changes to your app.
+    </p>
+
+    <div class="bookmarklet-card">
+      <p class="bookmarklet-instructions">
+        <strong>1.</strong> Make sure your bookmark bar is visible
+        (<code>⌘⇧B</code> in Chrome/Safari/Firefox).
+        <strong>2.</strong> Drag the button below onto it.
+      </p>
+      <a class="bookmarklet-drag" href="{{BOOKMARKLET_HREF}}">app-feedback-now</a>
+      <p class="drag-hint">
+        Right-click → "Bookmark this link" also works.
+        The bookmarklet is bound to this slug + port; re-visit this page if either changes.
+      </p>
+    </div>
+
+    <h2>Session</h2>
+    <div class="grid">
+      <div class="stat"><p class="stat-k">slug</p><p class="stat-v">{{SLUG}}</p></div>
+      <div class="stat"><p class="stat-k">port</p><p class="stat-v">{{PORT}}</p></div>
+      <div class="stat"><p class="stat-k">endpoint</p><p class="stat-v">{{ENDPOINT}}</p></div>
+      <div class="stat"><p class="stat-k">started</p><p class="stat-v">{{STARTED_AT}}</p></div>
+      <div class="stat" style="grid-column: 1 / -1;">
+        <p class="stat-k">storage</p>
+        <p class="stat-v">{{STORAGE_DIR}}</p>
+      </div>
+    </div>
+
+    <h2>How to use</h2>
+    <ol>
+      <li>Open your dev app (e.g. <code>http://localhost:8787/</code>) in a new tab.</li>
+      <li>Click the <strong>app-feedback-now</strong> bookmark. A floating <code>feedback</code> button appears bottom-right.</li>
+      <li>Highlight text or click <em>select element</em> to anchor a comment. Type your note, then submit the batch.</li>
+      <li>Claude reads <code>inbox.jsonl</code>, edits the source files of your app, and writes a change record to <code>history.json</code>. The page auto-reloads with a walkthrough.</li>
+    </ol>
+
+    <h2>Pages with strict Content-Security-Policy</h2>
+    <p style="color: var(--ink-dim); font-size: 14px; margin: 0 0 8px;">
+      If clicking the bookmarklet does nothing and the browser console shows a CSP error,
+      your dev server is blocking cross-origin scripts. For Cloudflare Workers / Astro / Hono in
+      dev mode this is rare, but if it happens, the cleanest fix is to relax the dev-only CSP to
+      allow <code>{{ENDPOINT}}</code>.
+    </p>
+
+    <h2>When you're done</h2>
+    <p style="color: var(--ink-dim); font-size: 14px; margin: 0 0 8px;">
+      You don't usually need to do anything — the sidecar auto-shuts-down when Claude Code exits or after
+      10 minutes of no client traffic. To stop it now: <code>lsof -ti:{{PORT}} | xargs kill</code>, or say
+      <em>"stop app-feedback-now"</em> in your Claude Code session.
+    </p>
+
+    <p class="footer">storage at <code>{{STORAGE_DIR}}</code></p>
+  </div>
+</body>
+</html>
