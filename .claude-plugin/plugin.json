@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "wiz-marketplace",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Context-efficient Claude Code plugins from Scott's AI Wizard (Wiz) collection.",
   "owner": {
     "name": "Scott Pierce",
@@ -35,6 +35,13 @@
       "description": "Leave inline comments on a live web app without touching the source. Bookmarklet + localhost sidecar; Claude edits source files in response. Fork of make-pages-interactive adapted for wrangler/vite/astro dev servers.",
       "source": "./app-feedback-now",
       "category": "development"
+    },
+    {
+      "name": "work",
+      "version": "1.1.0",
+      "description": "Persistent FIFO work queue for isolated, sequential task execution. Add tasks, drain them one at a time with isolated worker agents, or auto-process with a /work:monitor watcher.",
+      "source": "./work",
+      "category": "automation"
     }
   ]
 }

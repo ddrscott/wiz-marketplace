@@ -1,0 +1,10 @@
+{
+  "name": "work",
+  "version": "1.1.0",
+  "description": "Persistent FIFO work queue for isolated, sequential task execution across Claude sessions. Includes a /work:monitor watcher that auto-runs /work:next whenever pending tasks appear.",
+  "author": {
+    "name": "Scott Pierce",
+    "email": "ddrscott@gmail.com"
+  },
+  "keywords": ["work-queue", "tasks", "automation", "workflow", "monitor"]
+}

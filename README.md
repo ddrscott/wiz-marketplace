@@ -10,6 +10,7 @@ A collection of Claude Code plugins that extend Claude's capabilities with speci
 | [fal-agent](./fal-agent) | AI media generation using fal.ai. Smart model selection for images, videos, and audio without the research. |
 | [book-creator](./book-creator) | Create structured books and documents with chapters, formatting, and export options. |
 | [app-feedback-now](./app-feedback-now) | Leave inline comments on a live web app without touching the source. Bookmarklet + localhost sidecar; Claude edits source files in response. Fork of [make-pages-interactive](https://github.com/paraschopra/make-pages-interactive) adapted for wrangler/vite/astro dev servers. |
+| [work](./work) | Persistent FIFO work queue for isolated, sequential task execution. Add tasks, drain them one at a time with isolated worker agents, or auto-process with a `/work:monitor` watcher. |
 
 ## Prerequisites
 

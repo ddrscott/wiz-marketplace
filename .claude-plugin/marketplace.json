@@ -23,6 +23,11 @@
       "name": "app-feedback-now",
       "source": "./app-feedback-now",
       "description": "Leave inline comments on a live web app without touching the source. Bookmarklet + localhost sidecar; Claude edits source files in response. Fork of make-pages-interactive adapted for wrangler/vite/astro dev servers."
+    },
+    {
+      "name": "work",
+      "source": "./work",
+      "description": "Persistent FIFO work queue for isolated, sequential task execution. Add tasks, drain them one at a time with isolated worker agents, or auto-process with a /work:monitor watcher."
     }
   ]
 }
